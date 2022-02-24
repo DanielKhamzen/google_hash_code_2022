@@ -60,8 +60,8 @@ def parseur(filename) :
             skill = Skill(skill_info[0], skill_info[1])
             contrib.addSkill(skill)
             skill_global = Skill_global(skill_info[0])
+            skill_global = skills_globaux.addSkill(skill_global)
             skill_global.addContrib(contrib)
-            skills_globaux.addSkill(skill_global)
             
             
         contribs.append(contrib)

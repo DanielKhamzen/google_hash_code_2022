@@ -60,9 +60,16 @@ class Skills_globaux :
         self.skills_names = []
     
     def addSkill(self, skill_global) :
-        if not ( skill_global.getName() in self.skills_names) :
-            self.skills.append(skill_global)
-            self.skills_names.append(skill_global.getName())
+        for i in range(len(self.skills)) :
+            
+            if skill_global.getName() == self.skills_names[i] :
+                return self.skills[i]
+            
+ #       else :
+        self.skills.append(skill_global)
+        self.skills_names.append(skill_global.getName())
+        return skill_global
+            
     
     def getSkills_globaux(self) :
         return self.skills
