@@ -7,6 +7,12 @@ class Contributeur :
     def addSkill(self, skill) :
         self.skills.append(skill)
     
+    def getName(self) :
+        return self.name
+    
+    def getSkills(self) :
+        return self.skills
+    
 
 class Skill :
     
@@ -16,6 +22,12 @@ class Skill :
     
     def lvlup(self) :
         self.lvl = self.lvl + 1
+        
+    def getName(self) :
+        return self.name
+    
+    def getLvl(self) :
+        return self.lvl
     
 
 class Projet :
@@ -30,4 +42,25 @@ class Projet :
     
     def addRole(self, role) :
         self.roles.append(role)
+        self.contribs.append("")
+    
+    def getRoles(self) :
+        return self.roles
+    
+    def getName(self) :
+        return self.name
+    
+    def getDuration(self) :
+        return self.score
+    
+    def getLimite(self) :
+        return self.limite
+    
+    def getContribs(self) :
+        return self.contribs
+    
+    def addContrib(self, contrib, index_role) :
+        self.contribs[index_role] = contrib
+
+        
     
