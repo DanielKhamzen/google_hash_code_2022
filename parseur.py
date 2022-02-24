@@ -1,3 +1,6 @@
+from objects import Contributeur, Skill, Projet
+
+"""
 class Contributeur :
     
     def __init__(self, name) :
@@ -30,7 +33,7 @@ class Projet :
     
     def addRole(self, role) :
         self.roles.append(role)
-    
+"""
 
 
 
@@ -47,7 +50,7 @@ def parseur(filename) :
     for i in range(int(entete[0])) :
         line = file.readline()
         line = line[:-1]
-        contib_info = line.split(" ")
+        contrib_info = line.split(" ")
         contrib = Contributeur(contrib_info[0])
         for j in range(int(contrib_info[1])) :
             line = file.readline()
@@ -63,6 +66,12 @@ def parseur(filename) :
         line = file.readline()
         line = line[:-1]
         projet_info = line.split(" ")
-        projet = Projet(projet_info[0], projet_info[1], )
-    donnees = Data(entete, rues, cars)
-    return(donnees)
+        projet = Projet(projet_info[0], projet_info[1], projet_info[2], projet_info[3])
+        for j in range(int(projet_info[4])) :
+            line = file.readline()
+            line = line[:-1]
+            skill_info = line.split(" ")
+            skill = Skill(skill_info[0], skill_info[1])
+            projet.addRole(skill)
+        projets.append(projet)
+    return((contribs, projets))
