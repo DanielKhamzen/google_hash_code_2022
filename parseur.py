@@ -1,4 +1,4 @@
-from objects import Contributeur, Skill, Projet
+from objects import Contributeur, Skill, Projet, Skill_global, Skills_globaux
 
 """
 class Contributeur :
@@ -47,6 +47,7 @@ def parseur(filename) :
     line = line[:-1]
     entete = line.split(" ")
     contribs = []
+    skills_globaux = Skills_globaux()
     for i in range(int(entete[0])) :
         line = file.readline()
         line = line[:-1]
@@ -58,6 +59,10 @@ def parseur(filename) :
             skill_info = line.split(" ")
             skill = Skill(skill_info[0], skill_info[1])
             contrib.addSkill(skill)
+            skill_global = Skill_global(skill_info[0])
+            skill_global.addContrib(contrib)
+            skills_globaux.addSkill(skill_global)
+            
             
         contribs.append(contrib)
             
@@ -74,4 +79,4 @@ def parseur(filename) :
             skill = Skill(skill_info[0], skill_info[1])
             projet.addRole(skill)
         projets.append(projet)
-    return((contribs, projets))
+    return((contribs, projets, skills_globaux.getSkills_globaux()))

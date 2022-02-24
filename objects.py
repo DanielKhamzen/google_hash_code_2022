@@ -3,6 +3,7 @@ class Contributeur :
     def __init__(self, name) :
         self.name = name
         self.skills = []
+        self.disponible = True
     
     def addSkill(self, skill) :
         self.skills.append(skill)
@@ -13,7 +14,16 @@ class Contributeur :
     def getSkills(self) :
         return self.skills
     
-
+    def isDisponible(self) :
+        return self.disponible
+    
+    def setIndisponible(self) :
+        self.disponible = False
+        
+    def setDisponible(self) :
+        self.disponible = True
+        
+    
 class Skill :
     
     def __init__(self, name, lvl) :
@@ -28,6 +38,35 @@ class Skill :
     
     def getLvl(self) :
         return self.lvl
+
+class Skill_global :
+    
+    def __init__(self, name):
+        self.name = name
+        self.contribs = []
+    
+    def addContrib(self, contrib) :
+        self.contribs.append(contrib)
+    
+    def getContribs(self) :
+        return self.contribs
+    
+    def getName(self) :
+        return self.name
+
+class Skills_globaux :
+    def __init__(self):
+        self.skills = []
+        self.skills_names = []
+    
+    def addSkill(self, skill_global) :
+        if not ( skill_global.getName() in self.skills_names) :
+            self.skills.append(skill_global)
+            self.skills_names.append(skill_global.getName())
+    
+    def getSkills_globaux(self) :
+        return self.skills
+        
     
 
 class Projet :
