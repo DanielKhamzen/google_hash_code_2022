@@ -18,7 +18,19 @@ class Skill :
         self.lvl = self.lvl + 1
     
 
-
+class Projet :
+    
+    def __init__(self, name, duration, score, limite) :
+        self.name = name
+        self.duration = duration
+        self.score = score
+        self.limite = limite
+        self.roles = []
+        self.contribs = []
+    
+    def addRole(self, role) :
+        self.roles.append(role)
+    
 
 
 
@@ -44,13 +56,13 @@ def parseur(filename) :
             skill = Skill(skill_info[0], skill_info[1])
             contrib.addSkill(skill)
             
-            # caca
+        contribs.append(contrib)
             
-            
-    cars = []
-    for i in range(int(entete[3])) :
+    projets = []
+    for i in range(int(entete[1])) :
         line = file.readline()
         line = line[:-1]
-        cars.append(line.split(" "))
+        projet_info = line.split(" ")
+        projet = Projet(projet_info[0], projet_info[1], )
     donnees = Data(entete, rues, cars)
     return(donnees)
