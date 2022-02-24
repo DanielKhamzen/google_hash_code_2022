@@ -23,6 +23,11 @@ class Contributeur :
     def setDisponible(self) :
         self.disponible = True
         
+    def getSkill(self, skill_name) :
+        for skill in self.skills :
+            if skill.getName() == skill_name :
+                return skill
+        
     
 class Skill :
     

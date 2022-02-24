@@ -1,5 +1,6 @@
 from parseur import parseur
 from objects import Contributeur, Skill, Projet
+from writer import writeData
 
 def main():
     ## j'ai un liste de contributeurs
@@ -18,31 +19,25 @@ def main():
     contributeurs = parseurs[0]
     projects = parseurs[1]
     skills = parseurs[2]
-    roles = getRoles(projects)
-    assignUsersToProjects(projects, contributeurs, roles, skills)
-    
+    for project in projects :
+        assignUsersToProjects(project, contributeurs, skills)
+    writeData("out.a", projects)
     return 0
 
 
-def assignUsersToProjects(projects, contributeurs, roles, skillList):
+def assignUsersToProjects(project, contributeurs, skillList):
     print_list(skillList)
-    for role in roles:
+    roles = project.getRoles()
+    for i in range(len(roles)):
+        role = roles[i]
         for skill in skillList:
             if skill.name == role.name:
                 contribs = skill.getContribs()
                 for contrib in contribs:
-                    if contrib.isDisponible:
-                        return 0
-        contributeur = role.name in contributeurs.name
-        print(contributeur)
-        ## trouver le premier utilisateur qui a un skill === au role.name et qui a un skillLevel === role.skillLevel
+                    if (contrib.isDisponible() and contrib.getSkill(skill.name)):
+                        project.addContrib(contrib, i)
     return 0
 
-def getRoles(projects):
-    roles = []
-    for project in projects:
-        roles += project.getRoles()
-    return roles
 
 def print_list(list):
     for i in list:
