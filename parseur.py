@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 def parseur(filename) :
     file = open(filename, "r")
     line = file.readline()
