@@ -4,6 +4,7 @@ class Contributeur :
         self.name = name
         self.skills = []
         self.disponible = True
+        self.temps = 0
     
     def addSkill(self, skill) :
         self.skills.append(skill)
@@ -14,19 +15,22 @@ class Contributeur :
     def getSkills(self) :
         return self.skills
     
-    def isDisponible(self) :
+    def isDisponible(self, temps) :
+        if(self.temps <= temps):
+            self.disponible = True
         return self.disponible
     
-    def setIndisponible(self) :
+    def setIndisponible(self, temps) :
         self.disponible = False
+        self.temps = temps
         
     def setDisponible(self) :
         self.disponible = True
         
-    def getSkill(self, skill_name) :
+    def getSkill(self, skill_entree) :
         for skill in self.skills :
-            if skill.getName() == skill_name :
-                return skill
+            if skill.getName() == skill_entree.getName() :
+                return skill.getLvl()>=skill_entree.getLvl()
         
     
 class Skill :
@@ -93,7 +97,7 @@ class Projet :
     
     def addRole(self, role) :
         self.roles.append(role)
-        self.contribs.append("")
+        self.contribs.append(None)
     
     def getRoles(self) :
         return self.roles
@@ -102,6 +106,9 @@ class Projet :
         return self.name
     
     def getDuration(self) :
+        return self.duration
+    
+    def getScore(self) :
         return self.score
     
     def getLimite(self) :

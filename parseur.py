@@ -71,7 +71,7 @@ def parseur(filename) :
         line = file.readline()
         line = line[:-1]
         projet_info = line.split(" ")
-        projet = Projet(projet_info[0], projet_info[1], projet_info[2], projet_info[3])
+        projet = Projet(projet_info[0], int(projet_info[1]), int(projet_info[2]), int(projet_info[3]))
         for j in range(int(projet_info[4])) :
             line = file.readline()
             line = line[:-1]
